@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>Trip Information Management</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: rgba(255, 255, 255, 0.86);
+      --panel-strong: #ffffff;
+      --text: #122033;
+      --subtle: #607086;
+      --line: rgba(18, 32, 51, 0.1);
+      --accent: #2962ff;
+      --accent-soft: rgba(41, 98, 255, 0.12);
+      --shadow: 0 18px 40px rgba(28, 55, 90, 0.12);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09111f;
+        --panel: rgba(15, 24, 39, 0.88);
+        --panel-strong: #111b2c;
+        --text: #f3f7ff;
+        --subtle: #9badc5;
+        --line: rgba(152, 180, 219, 0.14);
+        --accent: #7db6ff;
+        --accent-soft: rgba(125, 182, 255, 0.16);
+        --shadow: 0 20px 44px rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(41, 98, 255, 0.18), transparent 24rem),
+        radial-gradient(circle at left bottom, rgba(58, 168, 255, 0.16), transparent 22rem),
+        var(--bg);
+      min-height: 100vh;
+    }
+    .shell {
+      width: min(1100px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+    .hero {
+      background: linear-gradient(135deg, rgba(41, 98, 255, 0.12), rgba(32, 201, 151, 0.08)), var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      backdrop-filter: blur(18px);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--subtle);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.06;
+      margin: 0 0 12px;
+    }
+    .lead {
+      margin: 0;
+      max-width: 700px;
+      line-height: 1.7;
+      color: var(--subtle);
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 26px;
+    }
+    .card {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .trip-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .trip-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .trip-card h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .trip-card p {
+      margin: 0;
+      color: var(--subtle);
+      line-height: 1.7;
+    }
+    .trip-card a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(41, 98, 255, 0.26);
+    }
+    .note {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px dashed var(--line);
+      color: var(--subtle);
+      line-height: 1.7;
+      background: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 720px) {
+      .shell { width: min(100vw - 20px, 1100px); padding-top: 20px; }
+      .hero, .trip-card { padding: 20px; }
+      .trip-card h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">Trip Information Management</div>
+      <h1>按目的地管理你的旅行手册</h1>
+      <p class="lead">
+        这里是旅行总入口。每一次出行都单独维护一份可公开访问、适合手机查看的离线手册，后续可以继续新增新的目的地，而不会把不同旅程混在一起。
+      </p>
+      <div class="grid">
+        <article class="card trip-card">
+          <div class="trip-meta">
+            <span class="chip">日本关西</span>
+            <span class="chip">首个目的地</span>
+          </div>
+          <h2>关西行程</h2>
+          <p>
+            当前版本已接入飞书表格中的基础行程信息，并预留了后续继续核对交通、景点预约、拥挤风险和待办事项的空间。
+          </p>
+          <a href="./trips/kansai/">打开关西手册</a>
+        </article>
+      </div>
+      <div class="note">
+        后续新增目的地时，按 `trips/&lt;destination&gt;/index.html` 继续扩展即可，首页只负责作为统一入口。
+      </div>
+    </section>
+  </main>
+</body>
+</html>
